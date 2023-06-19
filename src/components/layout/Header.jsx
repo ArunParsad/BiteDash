@@ -1,5 +1,5 @@
 import React from 'react'
-import Container from './layout/Container'
+import Container from './Container'
 import { BiSearch } from 'react-icons/bi'
 import { BsFillBucketFill } from 'react-icons/bs'
 
