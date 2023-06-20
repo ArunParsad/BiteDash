@@ -8,7 +8,10 @@ const Header = ({ setSearchText, filterFeed, searchText, resetFeedUI }) => {
     <>
       <Container>
         <div className='flex flex-col md:flex-row items-center justify-between space-y-5 md:space-y-0'>
-          <div className='flex justify-center items-center flex-col md:flex-row hover:cursor-pointer' onClick={resetFeedUI}>
+          <div
+            className='flex justify-center items-center flex-col md:flex-row hover:cursor-pointer'
+            onClick={resetFeedUI}
+          >
             <img
               src='https://ik.imagekit.io/uuxn3oqcr/BiteDash/food-delivery-company-logo-concept-delivery-logo-vector_157839-415_cleanup-removebg-preview__1__mj3kmX2oe.png?updatedAt=1687172642612'
               alt=''
@@ -19,7 +22,10 @@ const Header = ({ setSearchText, filterFeed, searchText, resetFeedUI }) => {
             </h2>
           </div>
           <div className='flex justify-center space-x-5 items-center'>
-            <div className='flex bg-white justify-center items-center py-3 px-5 rounded-full'>
+            <form
+              className='flex bg-white justify-center items-center py-3 px-5 rounded-full'
+              onSubmit={(e) => filterFeed(e)}
+            >
               <input
                 type='text'
                 placeholder='Search'
@@ -27,8 +33,8 @@ const Header = ({ setSearchText, filterFeed, searchText, resetFeedUI }) => {
                 onChange={(e) => setSearchText(e.target.value)}
                 value={searchText}
               />
-              <BiSearch className='text-2xl hover:cursor-pointer hover:scale-110 transition-all duration-100' onClick={filterFeed} />
-            </div>
+              <BiSearch className='text-2xl' />
+            </form>
             <div>
               <BsFillBucketFill className='text-4xl text-[#F77132]' />
             </div>

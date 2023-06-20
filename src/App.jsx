@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Header from './components/layout/Header'
 import Feed from './components/layout/Feed'
 
-
 const filterUI = (allrestaurants, searchText) => {
-  const fillterData = allrestaurants.filter((restaurant) => restaurant?.data?.name?.toLowerCase().includes(searchText?.toLowerCase()))
+  const fillterData = allrestaurants.filter((restaurant) =>
+    restaurant?.data?.name?.toLowerCase().includes(searchText?.toLowerCase())
+  )
   return fillterData
 }
 
@@ -13,7 +14,6 @@ const App = () => {
   const [filteredSestaurant, setFilteredSestaurant] = useState([])
   const [feedUI, setFeedUI] = useState([])
   const [searchText, setSearchText] = useState()
-
 
   const getallrestaurants = async () => {
     const res = await fetch(
@@ -25,8 +25,12 @@ const App = () => {
     setFeedUI(data?.data?.cards[2]?.data?.data?.cards)
   }
 
-  const filterFeed = () => {
-    const filterData = filterUI(allrestaurants?.data?.cards[2]?.data?.data?.cards, searchText)
+  const filterFeed = (e) => {
+    e.preventDefault()
+    const filterData = filterUI(
+      allrestaurants?.data?.cards[2]?.data?.data?.cards,
+      searchText
+    )
     setFeedUI(filterData)
     setSearchText('')
   }
@@ -35,14 +39,18 @@ const App = () => {
     setFeedUI(allrestaurants?.data?.cards[2]?.data?.data?.cards)
   }
 
-
   useEffect(() => {
     getallrestaurants()
   }, [])
 
   return (
     <>
-      <Header setSearchText={setSearchText} searchText={searchText} filterFeed={filterFeed} resetFeedUI={resetFeedUI} />
+      <Header
+        setSearchText={setSearchText}
+        searchText={searchText}
+        filterFeed={filterFeed}
+        resetFeedUI={resetFeedUI}
+      />
       <Feed feedUI={feedUI} />
     </>
   )
