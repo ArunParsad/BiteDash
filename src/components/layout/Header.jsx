@@ -3,16 +3,16 @@ import Container from './Container'
 import { BiSearch } from 'react-icons/bi'
 import { BsFillBucketFill } from 'react-icons/bs'
 
-const Header = () => {
+const Header = ({ setSearchText, filterFeed, searchText, resetFeedUI }) => {
   return (
     <>
       <Container>
         <div className='flex flex-col md:flex-row items-center justify-between space-y-5 md:space-y-0'>
-          <div className='flex justify-center items-center flex-col md:flex-row'>
+          <div className='flex justify-center items-center flex-col md:flex-row hover:cursor-pointer' onClick={resetFeedUI}>
             <img
               src='https://ik.imagekit.io/uuxn3oqcr/BiteDash/food-delivery-company-logo-concept-delivery-logo-vector_157839-415_cleanup-removebg-preview__1__mj3kmX2oe.png?updatedAt=1687172642612'
               alt=''
-              className='w-20'
+              className='w-20 '
             />
             <h2>
               Bite<span className='font-bold'>Dash</span>
@@ -24,8 +24,10 @@ const Header = () => {
                 type='text'
                 placeholder='Search'
                 className='focus:outline-none'
+                onChange={(e) => setSearchText(e.target.value)}
+                value={searchText}
               />
-              <BiSearch className='text-2xl hover:cursor-pointer hover:scale-110 transition-all duration-100' />
+              <BiSearch className='text-2xl hover:cursor-pointer hover:scale-110 transition-all duration-100' onClick={filterFeed} />
             </div>
             <div>
               <BsFillBucketFill className='text-4xl text-[#F77132]' />

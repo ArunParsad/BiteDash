@@ -15,7 +15,7 @@ const Feed = ({ feedUI }) => {
     return (
       <>
         <Container>
-          <div className='grid grid-cols-1 md:grid-cols-4 place-items-center	 space-x-4 space-y-4'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center	 space-x-4 space-y-4'>
             {feedUI?.map((restaurant) => {
               return (
                 <RestaurantCard
