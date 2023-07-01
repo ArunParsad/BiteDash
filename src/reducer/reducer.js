@@ -20,5 +20,14 @@ export const reducer = (state, action) => {
 
     case 'RESET_UI':
       return { ...state, feedUI: state.allrestaurants }
+
+    case 'RESTAURANT_INFO':
+      return {
+        ...state,
+        restaurantInfo: payload,
+        isRestaurantInfoLoading: false,
+      }
+    case 'RESDETAIL_UNMOUNT':
+      return { ...state, isRestaurantInfoLoading: true }
   }
 }

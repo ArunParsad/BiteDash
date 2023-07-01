@@ -9,6 +9,8 @@ const ContextProvider = ({ children }) => {
     feedUI: [],
     filteredSestaurant: [],
     isLoading: true,
+    restaurantInfo: {},
+    isRestaurantInfoLoading: true,
   }
 
   const [state, dispatch] = useReducer(reducer, initalState)

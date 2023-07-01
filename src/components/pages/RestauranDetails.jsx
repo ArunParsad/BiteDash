@@ -1,21 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { RESTAURANT_DETAILS_URL } from '../../assets/constant'
 import { useEffect } from 'react'
+import Container from '../layout/Container'
+import RetaurantHeader from '../layout/RetaurantHeader'
+import { useGlobalContext } from '../context/Context'
 const RestauranDetails = () => {
   const { id } = useParams()
+  const { dispatch, restaurantInfo, isRestaurantInfoLoading } =
+    useGlobalContext()
 
   useEffect(() => {
     getRestaurantDetails()
+
+    return () => {
+      dispatch({ type: 'RESDETAIL_UNMOUNT' })
+    }
   }, [])
 
   const getRestaurantDetails = async () => {
     const res = await fetch(RESTAURANT_DETAILS_URL + id)
     const data = await res.json()
-    console.log(data)
+    const {
+      name,
+      areaName,
+      cuisines,
+      totalRatingsString,
+      avgRating,
+      sla: { slaString },
+    } = await data?.data?.cards[0]?.card?.card?.info
+
+    const restaurantInfo = {
+      name,
+      areaName,
+      cuisines,
+      totalRatingsString,
+      avgRating,
+      slaString,
+    }
+    dispatch({ type: 'RESTAURANT_INFO', payload: restaurantInfo })
   }
 
-  return <div>ID : {id} </div>
+  return (
+    <Container>
+      <RetaurantHeader
+        {...restaurantInfo}
+        isRestaurantInfoLoading={isRestaurantInfoLoading}
+      />
+    </Container>
+  )
 }
 
 export default RestauranDetails
