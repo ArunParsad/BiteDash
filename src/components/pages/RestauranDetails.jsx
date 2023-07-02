@@ -3,12 +3,18 @@ import { useParams } from 'react-router-dom'
 import { RESTAURANT_DETAILS_URL } from '../../assets/constant'
 import { useEffect } from 'react'
 import Container from '../layout/Container'
-import RetaurantHeader from '../layout/RetaurantHeader'
+import RestaurantHeader from '../layout/RestaurantHeader'
 import { useGlobalContext } from '../context/Context'
+import RestaurantMenuList from '../layout/RestaurantMenuList'
 const RestauranDetails = () => {
   const { id } = useParams()
-  const { dispatch, restaurantInfo, isRestaurantInfoLoading } =
-    useGlobalContext()
+  const {
+    dispatch,
+    restaurantInfo,
+    isRestaurantInfoLoading,
+    restaurantMenuList,
+    isRestaurantMenuList,
+  } = useGlobalContext()
 
   useEffect(() => {
     getRestaurantDetails()
@@ -38,15 +44,20 @@ const RestauranDetails = () => {
       avgRating,
       slaString,
     }
+    const restaurantMenuList = await data?.data?.cards[2]?.groupedCard
+      ?.cardGroupMap?.REGULAR?.cards
+
     dispatch({ type: 'RESTAURANT_INFO', payload: restaurantInfo })
+    dispatch({ type: 'RESTAURANTMENULIST_INFO', payload: restaurantMenuList })
   }
 
   return (
     <Container>
-      <RetaurantHeader
+      <RestaurantHeader
         {...restaurantInfo}
         isRestaurantInfoLoading={isRestaurantInfoLoading}
       />
+      <RestaurantMenuList {...restaurantMenuList} />
     </Container>
   )
 }

@@ -29,5 +29,14 @@ export const reducer = (state, action) => {
       }
     case 'RESDETAIL_UNMOUNT':
       return { ...state, isRestaurantInfoLoading: true }
+    case 'RESTAURANTMENULIST_INFO':
+      return {
+        ...state,
+        restaurantMenuList: payload,
+        isRestaurantMenuListLoading: false,
+      }
+
+    case 'UNMOUNT_RESMENU':
+      return { ...state, isRestaurantMenuListLoading: true }
   }
 }

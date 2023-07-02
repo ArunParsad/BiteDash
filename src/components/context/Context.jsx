@@ -11,6 +11,8 @@ const ContextProvider = ({ children }) => {
     isLoading: true,
     restaurantInfo: {},
     isRestaurantInfoLoading: true,
+    restaurantMenuList: [],
+    isRestaurantMenuListLoading: true,
   }
 
   const [state, dispatch] = useReducer(reducer, initalState)

@@ -5,3 +5,7 @@
 body {
   background: #f8f8f8;
 }
+
+#my-list:nth-child(2) {
+  color: red;
+}

@@ -5,7 +5,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { CgTimelapse } from 'react-icons/cg'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-const RetaurantHeader = ({
+const RestaurantHeader = ({
   name,
   areaName,
   cuisines,
@@ -14,7 +14,6 @@ const RetaurantHeader = ({
   slaString,
   isRestaurantInfoLoading,
 }) => {
-  console.log(isRestaurantInfoLoading)
   if (isRestaurantInfoLoading) {
     return (
       <Container>
@@ -82,4 +81,4 @@ const RetaurantHeader = ({
   }
 }
 
-export default RetaurantHeader
+export default RestaurantHeader
