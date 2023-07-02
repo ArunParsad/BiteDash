@@ -13,7 +13,7 @@ const RestaurantMenuList = (props) => {
     keys.map((key) => {
       setSelected(restaurantMenuList[1]?.card?.card?.title)
     })
-  }, [selected, restaurantMenuList])
+  }, [restaurantMenuList])
 
   useEffect(() => {
     return () => {
