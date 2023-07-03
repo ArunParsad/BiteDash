@@ -57,7 +57,7 @@ const RestauranDetails = () => {
         {...restaurantInfo}
         isRestaurantInfoLoading={isRestaurantInfoLoading}
       />
-      <RestaurantMenuList {...restaurantMenuList} />
+      <RestaurantMenuList />
     </Container>
   )
 }

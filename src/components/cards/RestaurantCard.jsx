@@ -9,7 +9,7 @@ const RestaurantCard = ({
   cloudinaryImageId,
 }) => {
   return (
-    <div className='w-[18rem] h-[20rem] bg-white rounded-md p-3 hover:scale-105 hover:cursor-pointer transition-all duration-200'>
+    <div className='w-[20rem] h-[20rem] bg-white rounded-md p-3 hover:scale-105 hover:cursor-pointer transition-all duration-200'>
       {/* Header */}
       <div className='w-full h-[50%] rounded-md flex flex-col justify-center items-center overflow-hidden'>
         <img

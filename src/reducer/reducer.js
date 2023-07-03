@@ -38,5 +38,18 @@ export const reducer = (state, action) => {
 
     case 'UNMOUNT_RESMENU':
       return { ...state, isRestaurantMenuListLoading: true }
+
+      case 'FILTERED_MENU_LIST':
+        
+        let menuItems = {}
+        for(const key in state.restaurantMenuList){
+          if(state.restaurantMenuList[key]?.card?.card?.title === payload){
+            menuItems = state.restaurantMenuList[key]?.card?.card?.carousel || state.restaurantMenuList[key]?.card?.card?.itemCards
+          }
+        }
+
+        
+        
+        return {...state, menuListItems: menuItems}
   }
 }
