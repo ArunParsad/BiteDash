@@ -6,3 +6,9 @@ export const IMG_CDN_URL =
 
 export const RESTAURANT_DETAILS_URL =
   'https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.2066718&lng=72.8371469&restaurantId='
+
+export const ITEM_IMG_CDN_UR =
+  'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/'
+
+export const ITEM_IMG_DEAFULT =
+  'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png'
