@@ -70,7 +70,7 @@ const RestaurantMenuList = () => {
               }
             })}
           </ul>
-          <div className='col-span-9 bg-white rounded-md shadow-md px-10 py-5 h-[65vh] overflow-scroll scrollbar-hide p-2'>
+          <div className='col-span-9 bg-white rounded-md shadow-md px-10 py-5 h-[65vh] overflow-scroll scrollbar-hide p-2 space-y-3'>
             {menuListItemsKeys.map((item) => {
               const itemObj = menuListItems[item]
               if (itemObj.type === 'TopCarousel') {
