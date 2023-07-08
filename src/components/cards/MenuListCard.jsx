@@ -39,7 +39,7 @@ const MenuListCard = ({
           <img
             src={imageId ? ITEM_IMG_CDN_UR + imageId : ITEM_IMG_DEAFULT}
             alt=''
-            className='rounded-md w-60 h-40'
+            className='rounded-md w-60 h-40 shadow-sm'
           />
           <button className='px-6 py-3 bg-white shadow-md rounded-full text-xl font-bold text-green-400 mt-[-2rem]'>
             ADD
