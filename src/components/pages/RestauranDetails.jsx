@@ -47,6 +47,8 @@ const RestauranDetails = () => {
     const restaurantMenuList = await data?.data?.cards[2]?.groupedCard
       ?.cardGroupMap?.REGULAR?.cards
 
+
+
     dispatch({ type: 'RESTAURANT_INFO', payload: restaurantInfo })
     dispatch({ type: 'RESTAURANTMENULIST_INFO', payload: restaurantMenuList })
   }

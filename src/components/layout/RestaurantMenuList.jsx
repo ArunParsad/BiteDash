@@ -8,13 +8,13 @@ import RestaurantMenuLoadingShimmer from '../shimmerui/RestaurantMenuLoadingShim
 import MenuListItems from './MenuListItems'
 const RestaurantMenuList = () => {
   const [selected, setSelected] = useState('')
+  const [keys, setKeys] = useState([])
   const {
     dispatch,
     isRestaurantMenuListLoading,
     menuListItems,
     restaurantMenuList,
   } = useGlobalContext()
-  const keys = Object.keys(restaurantMenuList)
   const menuListItemsKeys = Object.keys(menuListItems)
   // Logs
 
@@ -39,7 +39,10 @@ const RestaurantMenuList = () => {
   }, [selected])
 
   useEffect(() => {
-    setSelected(restaurantMenuList[1]?.card?.card?.title)
+    if (restaurantMenuList) {
+      setSelected(restaurantMenuList[1]?.card?.card?.title)
+      setKeys(Object.keys(restaurantMenuList))
+    }
   }, [restaurantMenuList])
 
   // UI
@@ -57,6 +60,15 @@ const RestaurantMenuList = () => {
                 const countItem =
                   restaurantMenuList[key]?.card?.card?.carousel?.length ||
                   restaurantMenuList[key]?.card?.card?.itemCards?.length
+
+
+                // for now if restaurant has nested menu do not render
+
+                if (restaurantMenuList[key]?.card?.card?.categories) {
+                  return null
+                }
+
+                // render menu only one level deep
                 return (
                   <MenuListItems
                     selected={selected}
