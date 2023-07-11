@@ -8,6 +8,7 @@ const MenuListCard = ({
   isVeg,
   category,
   price,
+  defaultPrice
 }) => {
   return (
     <div className='grid grid-cols-6'>
@@ -29,7 +30,7 @@ const MenuListCard = ({
           )}
         </div>
         <h2 className='mt-2 font-bold text-lg text-gray-600'>{name}</h2>
-        <h2 className='mt-1 text-xl text-gray-600'>₹ {price / 100}</h2>
+        <h2 className='mt-1 text-xl text-gray-600'>₹ {price ? price / 100 : defaultPrice / 100}</h2>
         <button className='text-gray-600 px-2 py-1 border rounded-full'>
           More Details
         </button>

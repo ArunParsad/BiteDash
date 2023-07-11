@@ -96,7 +96,9 @@ const RestaurantMenuList = () => {
                   isVeg,
                   category,
                   price,
+                  defaultPrice
                 } = itemObj.card.info
+
                 const itemInfo = {
                   name,
                   id,
@@ -105,7 +107,9 @@ const RestaurantMenuList = () => {
                   isVeg,
                   category,
                   price,
+                  defaultPrice
                 }
+
                 return <MenuListCard {...itemInfo} key={id} />
               }
             })}
