@@ -40,7 +40,7 @@ const RestaurantMenuList = () => {
 
   useEffect(() => {
     if (restaurantMenuList) {
-      setSelected(restaurantMenuList[1]?.card?.card?.title)
+      setSelected(restaurantMenuList[0]?.card?.card?.title)
       setKeys(Object.keys(restaurantMenuList))
     }
   }, [restaurantMenuList])

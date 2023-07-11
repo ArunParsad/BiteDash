@@ -44,10 +44,9 @@ const RestauranDetails = () => {
       avgRating,
       slaString,
     }
-    const restaurantMenuList = await data?.data?.cards[2]?.groupedCard
+    const indexForRestauranMenuList = data?.data?.cards?.length - 1
+    const restaurantMenuList = await data?.data?.cards[indexForRestauranMenuList]?.groupedCard
       ?.cardGroupMap?.REGULAR?.cards
-
-
 
     dispatch({ type: 'RESTAURANT_INFO', payload: restaurantInfo })
     dispatch({ type: 'RESTAURANTMENULIST_INFO', payload: restaurantMenuList })
