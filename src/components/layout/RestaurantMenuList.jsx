@@ -6,6 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import MenuListCard from '../cards/MenuListCard'
 import RestaurantMenuLoadingShimmer from '../shimmerui/RestaurantMenuLoadingShimmer'
 import MenuListItems from './MenuListItems'
+import MenuListOption from './MenuListOption'
 const RestaurantMenuList = () => {
   const [selected, setSelected] = useState('')
   const [keys, setKeys] = useState([])
@@ -52,8 +53,8 @@ const RestaurantMenuList = () => {
   } else {
     return (
       <Container>
-        <div className='grid grid-cols-12 mt-5 gap-x-2'>
-          <ul className='col-span-3 bg-white shadow-md p-4 rounded-md space-y-3 h-[65vh] overflow-scroll scrollbar-hide'>
+        <div className='grid md:grid-cols-12 grid-cols-1 mt-5 gap-x-2'>
+          <ul className='hidden md:block col-span-3 bg-white shadow-md p-4 rounded-md space-y-3 h-[65vh] overflow-scroll scrollbar-hide'>
             {keys.map((key, index) => {
               const title = restaurantMenuList[key]?.card?.card?.title
               if (title) {
@@ -82,7 +83,7 @@ const RestaurantMenuList = () => {
               }
             })}
           </ul>
-          <div className='col-span-9 bg-white rounded-md shadow-md px-10 py-5 h-[65vh] overflow-scroll scrollbar-hide p-2 space-y-3'>
+          <div className='col-span-9 bg-white rounded-md shadow-md px-10 py-5 h-[65vh] overflow-scroll scrollbar-hide p-2 space-y-3 relative'>
             {menuListItemsKeys.map((item) => {
               const itemObj = menuListItems[item]
               if (itemObj.type === 'TopCarousel') {
@@ -113,8 +114,49 @@ const RestaurantMenuList = () => {
                 return <MenuListCard {...itemInfo} key={id} />
               }
             })}
+
+
+
+            <select className='md:hidden block fixed bottom-10 left-0 right-0 mx-auto w-40 rounded-full py-3 px-2 text-white bg-[#F77132] appearance-none text-center' onChange={(e) => {
+              setSelected(e.target.value)
+            }}>
+              {
+
+                keys.map((key, index) => {
+                  const title = restaurantMenuList[key]?.card?.card?.title
+                  if (title) {
+                    const countItem =
+                      restaurantMenuList[key]?.card?.card?.carousel?.length ||
+                      restaurantMenuList[key]?.card?.card?.itemCards?.length
+
+
+                    // for now if restaurant has nested menu do not render
+
+                    if (restaurantMenuList[key]?.card?.card?.categories) {
+                      return null
+                    }
+
+                    // render menu only one level deep
+                    return (
+
+                      <MenuListOption
+                        selected={selected}
+                        restaurantMenuList={restaurantMenuList}
+                        keyIndex={key}
+                        countItem={countItem}
+                        onHandelClick={onHandelClick}
+                        key={index}
+                      />
+
+                    )
+                  }
+                })
+
+              }
+            </select>
           </div>
         </div>
+
       </Container>
     )
   }

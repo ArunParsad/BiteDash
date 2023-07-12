@@ -32,12 +32,12 @@ const RestaurantHeader = ({
       <Container>
         <div className='flex justify-between items-center'>
           <section className='text-gray-600 flex flex-col space-y-2'>
-            <h2 className='text-3xl font-bold'>{name}</h2>
+            <h2 className='md:text-3xl font-bold text-lg'>{name}</h2>
             <div className='flex space-x-2'>
               {cuisines?.map((cuisine, index) => {
                 return (
                   <span
-                    className='bg-[#F77132] px-2 py-1 flex justify-center items-center rounded-full text-white'
+                    className='bg-[#F77132] md:px-2 md:py-1 flex justify-center items-center rounded-full text-white text-sm md:text-md px-1.5 py-0.5'
                     key={index}
                   >
                     {cuisine}
@@ -46,12 +46,12 @@ const RestaurantHeader = ({
               })}
             </div>
             <div className='flex space-x-2'>
-              <div className='flex space-x-3'>
-                <RiMapPinFill className='text-2xl' />
+              <div className='flex md:space-x-3 space-x-1 justify-center items-center'>
+                <RiMapPinFill className='md:text-2xl text-md' />
                 <span>{areaName}</span>
               </div>
-              <div className='flex justify-center items-center space-x-3'>
-                <CgTimelapse className='text-2xl' />
+              <div className='flex justify-center items-center md:space-x-3 space-x-1'>
+                <CgTimelapse className='md:text-2xl text-md' />
                 <span>{slaString}</span>
               </div>
             </div>
