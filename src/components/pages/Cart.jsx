@@ -30,8 +30,6 @@ const Cart = () => {
                 </h2>
               </div>
             </WideCard>
-            <WideCard></WideCard>
-            <WideCard></WideCard>
           </section>
         </main>
       </Container>
