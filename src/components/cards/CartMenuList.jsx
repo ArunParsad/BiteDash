@@ -1,5 +1,7 @@
 import React from 'react'
 import { ITEM_IMG_CDN_UR, ITEM_IMG_DEAFULT } from '../../assets/constant'
+import { MdAdd, MdRemove } from 'react-icons/md'
+import { useGlobalContext } from '../context/Context'
 const CartMenuList = ({
   name,
   id,
@@ -9,7 +11,22 @@ const CartMenuList = ({
   category,
   price,
   defaultPrice,
+  qty,
 }) => {
+  const { dispatch } = useGlobalContext()
+
+  const cartitem = {
+    name,
+    id,
+    imageId,
+    isBestseller,
+    isVeg,
+    category,
+    price,
+    defaultPrice,
+    qty,
+  }
+
   return (
     <div className='grid md:grid-cols-6 grid-cols-2'>
       <section className='md:col-span-4 col-span-1'>
@@ -43,10 +60,19 @@ const CartMenuList = ({
             alt=''
             className='rounded-md md:w-60 md:h-40 w-40 shadow-sm'
           />
-          <div className='md:px-6 md:py-3 px-3 py-1 bg-white shadow-md rounded-full text-xl font-bold text-green-400 mt-[-2rem]'>
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+          <div className='md:px-6 md:py-3 px-3 py-1 bg-white shadow-md rounded-full text-xl font-bold text-green-400 mt-[-2rem] flex justify-center items-center space-x-5'>
+            <button>
+              <MdRemove className='text-3xl' />
+            </button>
+            <span>{qty}</span>
+            <button
+              onClick={() => {
+                dispatch({ type: 'ADD_TO_CART', payload: cartitem })
+                dispatch({ type: 'CALCULATE_TOTAL_ITEMS_IN_CART' })
+              }}
+            >
+              <MdAdd className='text-3xl' />
+            </button>
           </div>
         </div>
       </section>

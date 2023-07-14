@@ -50,8 +50,12 @@ const Header = () => {
             </form>
             <div>
               <Link to={'/cart'}>
-                <BsFillBucketFill className='text-4xl text-[#F77132]' />
-                {totalCartItems}
+                <span className='relative'>
+                  <BsFillBucketFill className='text-5xl text-[#F77132]' />
+                  <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[6px] text-white'>
+                    {totalCartItems}
+                  </span>
+                </span>
               </Link>
             </div>
           </div>

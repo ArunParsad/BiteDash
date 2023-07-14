@@ -99,7 +99,7 @@ export const reducer = (state, action) => {
       // If the item exists in the cart, update its quantity
       if (existingItemIndex !== -1) {
         const updatedCart = [...state.cart]
-        updatedCart[existingItemIndex].qty += payload.qty
+        updatedCart[existingItemIndex].qty += 1
         return { ...state, cart: updatedCart }
       }
 
