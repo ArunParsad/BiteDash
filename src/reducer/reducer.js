@@ -133,5 +133,17 @@ export const reducer = (state, action) => {
         ...state,
         cart: updatedCart,
       }
+
+    case 'GET_TOTAL_AMOUNT':
+      let totalAmountPrice = 0
+
+      for (let i = 0; i < state.cart.length; i++) {
+        const price = (state.cart[i].price || state.cart[i].defaultPrice) / 100
+        const qty = state.cart[i].qty
+        const itemPrice = price * qty
+        totalAmountPrice += itemPrice
+      }
+
+      return { ...state, totalAmount: totalAmountPrice }
   }
 }

@@ -16,6 +16,7 @@ const ContextProvider = ({ children }) => {
     menuListItems: {},
     cart: [],
     totalCartItems: 0,
+    totalAmount: 0,
   }
 
   const [state, dispatch] = useReducer(reducer, initalState)
