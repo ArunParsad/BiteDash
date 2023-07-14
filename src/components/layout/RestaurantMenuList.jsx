@@ -62,7 +62,6 @@ const RestaurantMenuList = () => {
                   restaurantMenuList[key]?.card?.card?.carousel?.length ||
                   restaurantMenuList[key]?.card?.card?.itemCards?.length
 
-
                 // for now if restaurant has nested menu do not render
 
                 if (restaurantMenuList[key]?.card?.card?.categories) {
@@ -97,7 +96,7 @@ const RestaurantMenuList = () => {
                   isVeg,
                   category,
                   price,
-                  defaultPrice
+                  defaultPrice,
                 } = itemObj.card.info
 
                 const itemInfo = {
@@ -108,55 +107,48 @@ const RestaurantMenuList = () => {
                   isVeg,
                   category,
                   price,
-                  defaultPrice
+                  defaultPrice,
                 }
 
                 return <MenuListCard {...itemInfo} key={id} />
               }
             })}
 
+            <select
+              className='md:hidden block fixed bottom-10 left-0 right-0 mx-auto w-40 rounded-full py-3 px-2 text-white bg-[#F77132] appearance-none text-center'
+              onChange={(e) => {
+                setSelected(e.target.value)
+              }}
+            >
+              {keys.map((key, index) => {
+                const title = restaurantMenuList[key]?.card?.card?.title
+                if (title) {
+                  const countItem =
+                    restaurantMenuList[key]?.card?.card?.carousel?.length ||
+                    restaurantMenuList[key]?.card?.card?.itemCards?.length
 
+                  // for now if restaurant has nested menu do not render
 
-            <select className='md:hidden block fixed bottom-10 left-0 right-0 mx-auto w-40 rounded-full py-3 px-2 text-white bg-[#F77132] appearance-none text-center' onChange={(e) => {
-              setSelected(e.target.value)
-            }}>
-              {
-
-                keys.map((key, index) => {
-                  const title = restaurantMenuList[key]?.card?.card?.title
-                  if (title) {
-                    const countItem =
-                      restaurantMenuList[key]?.card?.card?.carousel?.length ||
-                      restaurantMenuList[key]?.card?.card?.itemCards?.length
-
-
-                    // for now if restaurant has nested menu do not render
-
-                    if (restaurantMenuList[key]?.card?.card?.categories) {
-                      return null
-                    }
-
-                    // render menu only one level deep
-                    return (
-
-                      <MenuListOption
-                        selected={selected}
-                        restaurantMenuList={restaurantMenuList}
-                        keyIndex={key}
-                        countItem={countItem}
-                        onHandelClick={onHandelClick}
-                        key={index}
-                      />
-
-                    )
+                  if (restaurantMenuList[key]?.card?.card?.categories) {
+                    return null
                   }
-                })
 
-              }
+                  // render menu only one level deep
+                  return (
+                    <MenuListOption
+                      selected={selected}
+                      restaurantMenuList={restaurantMenuList}
+                      keyIndex={key}
+                      countItem={countItem}
+                      onHandelClick={onHandelClick}
+                      key={index}
+                    />
+                  )
+                }
+              })}
             </select>
           </div>
         </div>
-
       </Container>
     )
   }

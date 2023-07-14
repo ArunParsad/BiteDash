@@ -1,7 +1,6 @@
 import React from 'react'
 import { ITEM_IMG_CDN_UR, ITEM_IMG_DEAFULT } from '../../assets/constant'
-import { useGlobalContext } from '../context/Context'
-const MenuListCard = ({
+const CartMenuList = ({
   name,
   id,
   imageId,
@@ -11,25 +10,6 @@ const MenuListCard = ({
   price,
   defaultPrice,
 }) => {
-  const menuItemData = {
-    name,
-    id,
-    imageId,
-    isBestseller,
-    isVeg,
-    category,
-    price,
-    defaultPrice,
-    qty: 1,
-  }
-
-  const { dispatch } = useGlobalContext()
-
-  const onAddClickHandelar = (item) => {
-    dispatch({ type: 'ADD_TO_CART', payload: item })
-    dispatch({ type: 'CALCULATE_TOTAL_ITEMS_IN_CART' })
-  }
-
   return (
     <div className='grid md:grid-cols-6 grid-cols-2'>
       <section className='md:col-span-4 col-span-1'>
@@ -55,9 +35,6 @@ const MenuListCard = ({
         <h2 className='mt-1 text-xl text-gray-600'>
           ₹ {price ? price / 100 : defaultPrice / 100}
         </h2>
-        <button className='text-gray-600 md:px-2 md:py-1 p-1  border rounded-full text-xs'>
-          More Details
-        </button>
       </section>
       <section className='md:col-span-2 col-span-1'>
         <div className='relative flex flex-col items-center'>
@@ -66,16 +43,15 @@ const MenuListCard = ({
             alt=''
             className='rounded-md md:w-60 md:h-40 w-40 shadow-sm'
           />
-          <button
-            className='md:px-6 md:py-3 px-3 py-1 bg-white shadow-md rounded-full text-xl font-bold text-green-400 mt-[-2rem]'
-            onClick={() => onAddClickHandelar(menuItemData)}
-          >
-            ADD
-          </button>
+          <div className='md:px-6 md:py-3 px-3 py-1 bg-white shadow-md rounded-full text-xl font-bold text-green-400 mt-[-2rem]'>
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+          </div>
         </div>
       </section>
     </div>
   )
 }
 
-export default MenuListCard
+export default CartMenuList

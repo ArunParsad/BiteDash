@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from './Container'
 import { BiSearch } from 'react-icons/bi'
 import { BsFillBucketFill } from 'react-icons/bs'
@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   const [searchText, setSearchText] = useState('')
-  const { dispatch } = useGlobalContext()
+  const { dispatch, totalCartItems } = useGlobalContext()
+
   return (
     <>
       <Container>
@@ -48,7 +49,10 @@ const Header = () => {
               <BiSearch className='text-2xl' />
             </form>
             <div>
-              <BsFillBucketFill className='text-4xl text-[#F77132]' />
+              <Link to={'/cart'}>
+                <BsFillBucketFill className='text-4xl text-[#F77132]' />
+                {totalCartItems}
+              </Link>
             </div>
           </div>
         </div>

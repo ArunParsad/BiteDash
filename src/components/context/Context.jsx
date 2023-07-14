@@ -13,7 +13,9 @@ const ContextProvider = ({ children }) => {
     isRestaurantInfoLoading: true,
     restaurantMenuList: {},
     isRestaurantMenuListLoading: true,
-    menuListItems:{}
+    menuListItems: {},
+    cart: [],
+    totalCartItems: 0,
   }
 
   const [state, dispatch] = useReducer(reducer, initalState)

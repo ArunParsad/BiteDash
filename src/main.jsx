@@ -6,6 +6,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ContextProvider from './components/context/Context.jsx'
 import RestauranDetails from './components/pages/RestauranDetails.jsx'
+import Cart from './components/pages/Cart.jsx'
 
 const router = createBrowserRouter([
   {
@@ -20,14 +21,16 @@ const router = createBrowserRouter([
         path: '/restauran/:id',
         element: <RestauranDetails />,
       },
+      {
+        path: '/cart',
+        element: <Cart />,
+      },
     ],
   },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ContextProvider>
-      <RouterProvider router={router} />
-    </ContextProvider>
-  </React.StrictMode>
+  <ContextProvider>
+    <RouterProvider router={router} />
+  </ContextProvider>
 )
