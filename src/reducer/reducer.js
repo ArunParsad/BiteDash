@@ -109,11 +109,29 @@ export const reducer = (state, action) => {
       return newState
 
     case 'CALCULATE_TOTAL_ITEMS_IN_CART':
-      const { cart } = state
-      const totalItemsInCart = cart.reduce((cur, acc) => {
+      const totalItemsInCart = state.cart.reduce((cur, acc) => {
         return (cur += acc.qty)
       }, 0)
 
       return { ...state, totalCartItems: totalItemsInCart }
+
+    case 'REMOVE_FROM_CART':
+      const itemIndex = state.cart.findIndex((item) => item.id === payload)
+      const updatedCart = [...state.cart]
+
+      if (itemIndex !== -1) {
+        // Decrease the quantity of the item
+        updatedCart[itemIndex].qty -= 1
+
+        // Remove the item from the cart if the quantity becomes zero
+        if (updatedCart[itemIndex].qty === 0) {
+          updatedCart.splice(itemIndex, 1)
+        }
+      }
+
+      return {
+        ...state,
+        cart: updatedCart,
+      }
   }
 }

@@ -61,7 +61,12 @@ const CartMenuList = ({
             className='rounded-md md:w-60 md:h-40 w-40 shadow-sm'
           />
           <div className='md:px-6 md:py-3 px-3 py-1 bg-white shadow-md rounded-full text-xl font-bold text-green-400 mt-[-2rem] flex justify-center items-center space-x-5'>
-            <button>
+            <button
+              onClick={() => {
+                dispatch({ type: 'REMOVE_FROM_CART', payload: id })
+                dispatch({ type: 'CALCULATE_TOTAL_ITEMS_IN_CART' })
+              }}
+            >
               <MdRemove className='text-3xl' />
             </button>
             <span>{qty}</span>
