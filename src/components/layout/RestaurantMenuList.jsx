@@ -16,6 +16,7 @@ const RestaurantMenuList = () => {
     menuListItems,
     restaurantMenuList,
   } = useGlobalContext()
+  const data = useGlobalContext()
   const menuListItemsKeys = Object.keys(menuListItems)
   // Logs
 
@@ -37,7 +38,7 @@ const RestaurantMenuList = () => {
       type: 'FILTERED_MENU_LIST',
       payload: selected,
     })
-  }, [selected])
+  }, [selected, restaurantMenuList])
 
   useEffect(() => {
     if (restaurantMenuList) {
